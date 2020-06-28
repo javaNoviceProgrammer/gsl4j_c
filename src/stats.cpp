@@ -539,7 +539,19 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedTotSumOfSquare
  * Signature: ([D[D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedAbsoluteSd
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jweights) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jweights) ;
+	jint len = gsl_min(len1, len2) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *weights = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jweights, 0, len, weights) ;
+	jdouble jresult = gsl_stats_wabsdev(weights, 1, data, 1, len) ;
+	delete[] data ;
+	delete[] weights ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -547,7 +559,19 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedAbsoluteSd
  * Signature: ([D[DD)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedAbsoluteSdMean
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray, jdouble);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jweights, jdouble jmean) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jweights) ;
+	jint len = gsl_min(len1, len2) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *weights = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jweights, 0, len, weights) ;
+	jdouble jresult = gsl_stats_wabsdev_m(weights, 1, data, 1, len, jmean) ;
+	delete[] data ;
+	delete[] weights ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -555,7 +579,19 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedAbsoluteSdMean
  * Signature: ([D[D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedSkew
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jweights) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jweights) ;
+	jint len = gsl_min(len1, len2) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *weights = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jweights, 0, len, weights) ;
+	jdouble jresult = gsl_stats_wskew(weights, 1, data, 1, len) ;
+	delete[] data ;
+	delete[] weights ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -563,7 +599,19 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedSkew
  * Signature: ([D[DDD)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedSkewMeanSd
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray, jdouble, jdouble);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jweights, jdouble mean, jdouble sd) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jweights) ;
+	jint len = gsl_min(len1, len2) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *weights = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jweights, 0, len, weights) ;
+	jdouble jresult = gsl_stats_wskew_m_sd(weights, 1, data, 1, len, mean, sd) ;
+	delete[] data ;
+	delete[] weights ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -571,7 +619,19 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedSkewMeanSd
  * Signature: ([D[D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedKurtosis
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jweights) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jweights) ;
+	jint len = gsl_min(len1, len2) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *weights = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jweights, 0, len, weights) ;
+	jdouble jresult = gsl_stats_wkurtosis(weights, 1, data, 1, len) ;
+	delete[] data ;
+	delete[] weights ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -579,7 +639,19 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedKurtosis
  * Signature: ([D[DDD)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedKurtosisMeanSd
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray, jdouble, jdouble);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jweights, jdouble mean, jdouble sd) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jweights) ;
+	jint len = gsl_min(len1, len2) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *weights = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jweights, 0, len, weights) ;
+	jdouble jresult = gsl_stats_wkurtosis_m_sd(weights, 1, data, 1, len, mean, sd) ;
+	delete[] data ;
+	delete[] weights ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -587,7 +659,14 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_weightedKurtosisMeanSd
  * Signature: ([D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_max
-  (JNIEnv *, jclass, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble jresult = gsl_stats_max(data, 1, len) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -595,7 +674,14 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_max
  * Signature: ([D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_min
-  (JNIEnv *, jclass, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble jresult = gsl_stats_min(data, 1, len) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -603,31 +689,69 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_min
  * Signature: ([D)[D
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_statistics_Stats_minmax
-  (JNIEnv *, jclass, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble min {0.0} ;
+	jdouble max {0.0} ;
+	gsl_stats_minmax(&min, &max, data, 1, len) ;
+	jdoubleArray jresult = env -> NewDoubleArray(2) ;
+	jdouble buf[] = {min, max} ;
+	env -> SetDoubleArrayRegion(jresult, 0, 2, buf) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
  * Method:    maxIndex
  * Signature: ([D)I
  */
-JNIEXPORT jint JNICALL Java_org_gsl4j_statistics_Stats_maxIndex
-  (JNIEnv *, jclass, jdoubleArray);
+JNIEXPORT jlong JNICALL Java_org_gsl4j_statistics_Stats_maxIndex
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jlong jresult = gsl_stats_max_index(data, 1, len) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
  * Method:    minIndex
  * Signature: ([D)I
  */
-JNIEXPORT jint JNICALL Java_org_gsl4j_statistics_Stats_minIndex
-  (JNIEnv *, jclass, jdoubleArray);
+JNIEXPORT jlong JNICALL Java_org_gsl4j_statistics_Stats_minIndex
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jlong jresult = gsl_stats_min_index(data, 1, len) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
  * Method:    minmaxIndex
  * Signature: ([D)[I
  */
-JNIEXPORT jintArray JNICALL Java_org_gsl4j_statistics_Stats_minmaxIndex
-  (JNIEnv *, jclass, jdoubleArray);
+JNIEXPORT jlongArray JNICALL Java_org_gsl4j_statistics_Stats_minmaxIndex
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	unsigned long int min {0} ;
+	unsigned long int max {0} ;
+	gsl_stats_minmax_index(&min, &max, data, 1, len) ;
+	jlongArray jresult = env -> NewLongArray(2) ;
+	jlong buf[] {(jlong)min, (jlong)max} ;
+	env -> SetLongArrayRegion(jresult, 0, len, buf) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -635,7 +759,14 @@ JNIEXPORT jintArray JNICALL Java_org_gsl4j_statistics_Stats_minmaxIndex
  * Signature: ([D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_medianFromSortedData
-  (JNIEnv *, jclass, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble jresult = gsl_stats_median_from_sorted_data(data, 1, len) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -643,15 +774,29 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_medianFromSortedData
  * Signature: ([D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_median
-  (JNIEnv *, jclass, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble jresult = gsl_stats_median(data, 1, len) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
  * Method:    quantileFromSortedData
- * Signature: ([D)D
+ * Signature: ([DD)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_quantileFromSortedData
-  (JNIEnv *, jclass, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdouble f) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble jresult = gsl_stats_quantile_from_sorted_data(data, 1, len, f) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -659,7 +804,14 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_quantileFromSortedData
  * Signature: ([DI)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_select
-  (JNIEnv *, jclass, jdoubleArray, jint);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jint k) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble jresult = gsl_stats_select(data, 1, len, k) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -667,7 +819,14 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_select
  * Signature: ([DD)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_trmeanFromSortedData
-  (JNIEnv *, jclass, jdoubleArray, jdouble);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdouble alpha) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble jresult = gsl_stats_trmean_from_sorted_data(alpha, data, 1, len) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -675,7 +834,14 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_trmeanFromSortedData
  * Signature: ([D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_gastwirthFromSortedData
-  (JNIEnv *, jclass, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata) {
+	jint len = env -> GetArrayLength(jdata) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble jresult = gsl_stats_gastwirth_from_sorted_data(data, 1, len) ;
+	delete[] data ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -683,7 +849,19 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_gastwirthFromSortedDat
  * Signature: ([D[D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_mad0
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jwork) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jwork) ;
+	jint len = gsl_min(len1, len2) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *work = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jwork, 0, len, work) ;
+	jdouble jresult = gsl_stats_mad0(data, 1, len, work) ;
+	delete[] data ;
+	delete[] work ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -691,7 +869,19 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_mad0
  * Signature: ([D[D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_mad
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jwork) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jwork) ;
+	jint len = gsl_min(len1, len2) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *work = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jwork, 0, len, work) ;
+	jdouble jresult = gsl_stats_mad(data, 1, len, work) ;
+	delete[] data ;
+	delete[] work ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -699,7 +889,19 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_mad
  * Signature: ([D[D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_sn0FromSortedData
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jwork) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jwork) ;
+	jint len = gsl_min(len1, len2) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *work = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jwork, 0, len, work) ;
+	jdouble jresult = gsl_stats_Sn0_from_sorted_data(data, 1, len, work) ;
+	delete[] data ;
+	delete[] work ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -707,7 +909,19 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_sn0FromSortedData
  * Signature: ([D[D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_snFromSortedData
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jwork) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jwork) ;
+	jint len = gsl_min(len1, len2) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *work = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jwork, 0, len, work) ;
+	jdouble jresult = gsl_stats_Sn_from_sorted_data(data, 1, len, work) ;
+	delete[] data ;
+	delete[] work ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -715,7 +929,24 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_snFromSortedData
  * Signature: ([D[D[D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_qn0FromSortedData
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jwork, jintArray jwork_int) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jwork) ;
+	jint len3 = env -> GetArrayLength(jwork_int) ;
+	jint len12 = gsl_min(len1, len2) ;
+	jint len = gsl_min(len12, len3) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *work = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jwork, 0, len, work) ;
+	jint *work_int = new jint[len] ;
+	env -> GetIntArrayRegion(jwork_int, 0, len, work_int) ;
+	jdouble jresult = gsl_stats_Qn0_from_sorted_data(data, 1, len, work, work_int) ;
+	delete[] data ;
+	delete[] work ;
+	delete[] work_int ;
+	return jresult ;
+}
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -723,7 +954,24 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_qn0FromSortedData
  * Signature: ([D[D[D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_qnFromSortedData
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray, jdoubleArray);
+  (JNIEnv *env, jclass Stats, jdoubleArray jdata, jdoubleArray jwork, jintArray jwork_int) {
+	jint len1 = env -> GetArrayLength(jdata) ;
+	jint len2 = env -> GetArrayLength(jwork) ;
+	jint len3 = env -> GetArrayLength(jwork_int) ;
+	jint len12 = gsl_min(len1, len2) ;
+	jint len = gsl_min(len12, len3) ;
+	jdouble *data = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jdata, 0, len, data) ;
+	jdouble *work = new jdouble[len] ;
+	env -> GetDoubleArrayRegion(jwork, 0, len, work) ;
+	jint *work_int = new jint[len] ;
+	env -> GetIntArrayRegion(jwork_int, 0, len, work_int) ;
+	jdouble jresult = gsl_stats_Qn_from_sorted_data(data, 1, len, work, work_int) ;
+	delete[] data ;
+	delete[] work ;
+	delete[] work_int ;
+	return jresult ;
+}
 
 
 

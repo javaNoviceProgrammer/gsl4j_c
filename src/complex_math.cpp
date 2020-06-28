@@ -16,7 +16,7 @@
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_complex_ComplexMath_arg
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	return gsl_complex_arg(z) ;
 }
 
@@ -27,7 +27,7 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_complex_ComplexMath_arg
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_complex_ComplexMath_abs
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	return gsl_complex_abs(z) ;
 }
 
@@ -38,7 +38,7 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_complex_ComplexMath_abs
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_complex_ComplexMath_abs2
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	return gsl_complex_abs2(z) ;
 }
 
@@ -49,7 +49,7 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_complex_ComplexMath_abs2
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_complex_ComplexMath_logabs
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	return gsl_complex_logabs(z) ;
 }
 
@@ -60,8 +60,8 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_complex_ComplexMath_logabs
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_add
   (JNIEnv *env, jclass complexMathClass, jdouble re1, jdouble im1, jdouble re2, jdouble im2) {
-	gsl_complex z1 = {re1, im1} ;
-	gsl_complex z2 = {re2, im2} ;
+	gsl_complex z1 {{re1, im1}} ;
+	gsl_complex z2 {{re2, im2}} ;
 	gsl_complex result = gsl_complex_add(z1, z2) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -75,8 +75,8 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_add
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sub
   (JNIEnv *env, jclass complexMathClass, jdouble re1, jdouble im1, jdouble re2, jdouble im2) {
-	gsl_complex z1 = {re1, im1} ;
-	gsl_complex z2 = {re2, im2} ;
+	gsl_complex z1 {{re1, im1}} ;
+	gsl_complex z2 {{re2, im2}} ;
 	gsl_complex result = gsl_complex_sub(z1, z2) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -90,8 +90,8 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sub
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_mul
   (JNIEnv *env, jclass complexMathClass, jdouble re1, jdouble im1, jdouble re2, jdouble im2) {
-	gsl_complex z1 = {re1, im1} ;
-	gsl_complex z2 = {re2, im2} ;
+	gsl_complex z1 {{re1, im1}} ;
+	gsl_complex z2 {{re2, im2}} ;
 	gsl_complex result = gsl_complex_mul(z1, z2) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -105,8 +105,8 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_mul
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_div
   (JNIEnv *env, jclass complexMathClass, jdouble re1, jdouble im1, jdouble re2, jdouble im2) {
-	gsl_complex z1 = {re1, im1} ;
-	gsl_complex z2 = {re2, im2} ;
+	gsl_complex z1 {{re1, im1}} ;
+	gsl_complex z2 {{re2, im2}} ;
 	gsl_complex result = gsl_complex_div(z1, z2) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -120,7 +120,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_div
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_addReal
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im, jdouble x) {
-	gsl_complex z1 = {re, im} ;
+	gsl_complex z1 {{re, im}} ;
 	gsl_complex result = gsl_complex_add_real(z1, x) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -134,7 +134,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_addReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_subReal
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im, jdouble x) {
-	gsl_complex z1 = {re, im} ;
+	gsl_complex z1 {{re, im}} ;
 	gsl_complex result = gsl_complex_sub_real(z1, x) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -148,7 +148,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_subReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_mulReal
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im, jdouble x) {
-	gsl_complex z1 = {re, im} ;
+	gsl_complex z1 {{re, im}} ;
 	gsl_complex result = gsl_complex_mul_real(z1, x) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -162,7 +162,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_mulReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_divReal
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im, jdouble x) {
-	gsl_complex z1 = {re, im} ;
+	gsl_complex z1 {{re, im}} ;
 	gsl_complex result = gsl_complex_div_real(z1, x) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -176,7 +176,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_divReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_addImag
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im, jdouble x) {
-	gsl_complex z1 = {re, im} ;
+	gsl_complex z1 {{re, im}} ;
 	gsl_complex result = gsl_complex_add_imag(z1, x) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -190,7 +190,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_addImag
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_subImag
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im, jdouble x) {
-	gsl_complex z1 = {re, im} ;
+	gsl_complex z1 {{re, im}} ;
 	gsl_complex result = gsl_complex_sub_imag(z1, x) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -204,7 +204,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_subImag
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_mulImag
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im, jdouble x) {
-	gsl_complex z1 = {re, im} ;
+	gsl_complex z1 {{re, im}} ;
 	gsl_complex result = gsl_complex_mul_imag(z1, x) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -218,7 +218,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_mulImag
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_divImag
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im, jdouble x) {
-	gsl_complex z1 = {re, im} ;
+	gsl_complex z1 {{re, im}} ;
 	gsl_complex result = gsl_complex_div_imag(z1, x) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -232,7 +232,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_divImag
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_conjugate
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_conjugate(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -246,7 +246,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_conjugate
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_inverse
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_inverse(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -260,7 +260,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_inverse
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_negative
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_negative(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -274,7 +274,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_negative
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sqrt
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_sqrt(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -301,8 +301,8 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sqrtReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_pow
   (JNIEnv *env, jclass complexMathClass, jdouble re1, jdouble im1, jdouble re2, jdouble im2) {
-	gsl_complex z1 = {re1, im1} ;
-	gsl_complex z2 = {re2, im2} ;
+	gsl_complex z1 {{re1, im1}} ;
+	gsl_complex z2 {{re2, im2}} ;
 	gsl_complex result = gsl_complex_pow(z1, z2) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -316,7 +316,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_pow
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_powReal
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im, jdouble x) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_pow_real(z, x) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -330,7 +330,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_powReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_exp
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_exp(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -344,7 +344,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_exp
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_log
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_log(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -358,7 +358,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_log
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_log10
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_log10(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -372,8 +372,8 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_log10
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_logb
   (JNIEnv *env, jclass complexMathClass, jdouble re1, jdouble im1, jdouble re2, jdouble im2) {
-	gsl_complex z1 = {re1, im1} ;
-	gsl_complex z2 = {re2, im2} ;
+	gsl_complex z1 {{re1, im1}} ;
+	gsl_complex z2 {{re2, im2}} ;
 	gsl_complex result = gsl_complex_log_b(z1, z2) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -387,7 +387,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_logb
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sin
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_sin(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -401,7 +401,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sin
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_cos
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_cos(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -415,7 +415,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_cos
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_tan
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_tan(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -429,7 +429,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_tan
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sec
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_sec(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -443,7 +443,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sec
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_csc
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_csc(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -457,7 +457,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_csc
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_cot
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_cot(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -471,7 +471,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_cot
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arcsin
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arcsin(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -498,7 +498,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arcsinReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arccos
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arccos(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -525,7 +525,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arccosReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arctan
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arctan(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -539,7 +539,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arctan
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arcsec
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arcsec(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -566,7 +566,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arcsecReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arccsc
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arccsc(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -593,7 +593,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arccscReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arccot
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arccot(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -607,7 +607,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arccot
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sinh
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_sinh(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -621,7 +621,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sinh
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_cosh
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_cosh(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -635,7 +635,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_cosh
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_tanh
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_tanh(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -649,7 +649,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_tanh
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sech
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_sech(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -663,7 +663,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_sech
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_csch
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_csch(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -677,7 +677,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_csch
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_coth
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_coth(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -691,7 +691,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_coth
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arcsinh
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arcsinh(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -705,7 +705,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arcsinh
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arccosh
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arccosh(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -732,7 +732,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arccoshReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arctanh
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arctanh(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -759,7 +759,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arctanhReal
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arcsech
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arcsech(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -773,7 +773,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arcsech
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arccsch
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arccsch(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
@@ -787,7 +787,7 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arccsch
  */
 JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_complex_ComplexMath_arccoth
   (JNIEnv *env, jclass complexMathClass, jdouble re, jdouble im) {
-	gsl_complex z = {re, im} ;
+	gsl_complex z {{re, im}} ;
 	gsl_complex result = gsl_complex_arccoth(z) ;
 	jdoubleArray jresult = env -> NewDoubleArray(2) ;
 	env -> SetDoubleArrayRegion(jresult, 0, 2, result.dat) ;
