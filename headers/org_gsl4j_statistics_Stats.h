@@ -322,25 +322,25 @@ JNIEXPORT jdoubleArray JNICALL Java_org_gsl4j_statistics_Stats_minmax
 /*
  * Class:     org_gsl4j_statistics_Stats
  * Method:    maxIndex
- * Signature: ([D)I
+ * Signature: ([D)J
  */
-JNIEXPORT jint JNICALL Java_org_gsl4j_statistics_Stats_maxIndex
+JNIEXPORT jlong JNICALL Java_org_gsl4j_statistics_Stats_maxIndex
   (JNIEnv *, jclass, jdoubleArray);
 
 /*
  * Class:     org_gsl4j_statistics_Stats
  * Method:    minIndex
- * Signature: ([D)I
+ * Signature: ([D)J
  */
-JNIEXPORT jint JNICALL Java_org_gsl4j_statistics_Stats_minIndex
+JNIEXPORT jlong JNICALL Java_org_gsl4j_statistics_Stats_minIndex
   (JNIEnv *, jclass, jdoubleArray);
 
 /*
  * Class:     org_gsl4j_statistics_Stats
  * Method:    minmaxIndex
- * Signature: ([D)[I
+ * Signature: ([D)[J
  */
-JNIEXPORT jintArray JNICALL Java_org_gsl4j_statistics_Stats_minmaxIndex
+JNIEXPORT jlongArray JNICALL Java_org_gsl4j_statistics_Stats_minmaxIndex
   (JNIEnv *, jclass, jdoubleArray);
 
 /*
@@ -362,10 +362,10 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_median
 /*
  * Class:     org_gsl4j_statistics_Stats
  * Method:    quantileFromSortedData
- * Signature: ([D)D
+ * Signature: ([DD)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_quantileFromSortedData
-  (JNIEnv *, jclass, jdoubleArray);
+  (JNIEnv *, jclass, jdoubleArray, jdouble);
 
 /*
  * Class:     org_gsl4j_statistics_Stats
@@ -426,18 +426,18 @@ JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_snFromSortedData
 /*
  * Class:     org_gsl4j_statistics_Stats
  * Method:    qn0FromSortedData
- * Signature: ([D[D[D)D
+ * Signature: ([D[D[I)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_qn0FromSortedData
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray, jdoubleArray);
+  (JNIEnv *, jclass, jdoubleArray, jdoubleArray, jintArray);
 
 /*
  * Class:     org_gsl4j_statistics_Stats
  * Method:    qnFromSortedData
- * Signature: ([D[D[D)D
+ * Signature: ([D[D[I)D
  */
 JNIEXPORT jdouble JNICALL Java_org_gsl4j_statistics_Stats_qnFromSortedData
-  (JNIEnv *, jclass, jdoubleArray, jdoubleArray, jdoubleArray);
+  (JNIEnv *, jclass, jdoubleArray, jdoubleArray, jintArray);
 
 #ifdef __cplusplus
 }
