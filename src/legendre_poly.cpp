@@ -5,6 +5,7 @@
  *      Author: meisam
  */
 
+#include <stdlib.h>
 #include <gsl/gsl_sf_legendre.h>
 #include "../headers/org_gsl4j_polynom_LegendrePolynom.h"
 
